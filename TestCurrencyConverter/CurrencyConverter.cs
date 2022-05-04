@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TestCurrencyConverter
 {
     public class CurrencyConverter : ICurrencyConverter
     {
-        public readonly Dictionary<(string, string), double> convertRates;
+        public readonly Dictionary<(string, string), double> convertRates; // todo : change public to private
 
         public CurrencyConverter()
         {
-            this.convertRates = new Dictionary<(string, string), double>();
+            convertRates = new Dictionary<(string, string), double>();
         }
 
         public void ClearConfiguration()
@@ -23,7 +18,7 @@ namespace TestCurrencyConverter
 
         public double Convert(string fromCurrency, string toCurrency, double amount)
         {
-            if(convertRates.ContainsKey((fromCurrency, toCurrency)))    
+            if (convertRates.ContainsKey((fromCurrency, toCurrency)))
                 return amount * convertRates[(fromCurrency, toCurrency)];
 
             if (convertRates.ContainsKey((toCurrency, fromCurrency)))
@@ -79,7 +74,7 @@ namespace TestCurrencyConverter
                 if (relation.Key.Item1 == second)
                 {
                     var newRate = rate * relation.Value;
-                    AddRelation(first , relation.Key.Item2, newRate);
+                    AddRelation(first, relation.Key.Item2, newRate);
                 }
                 else // item2 == second
                 {

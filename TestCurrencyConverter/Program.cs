@@ -3,11 +3,6 @@ using TestCurrencyConverter;
 
 var currencyConverter = new CurrencyConverter();
 
-currencyConverter.AddRelation("cad", "gbp", .8);
-currencyConverter.AddRelation("usd", "cad", 1.3);
-currencyConverter.AddRelation("usd", "eur", 1.2);
-currencyConverter.AddRelation("usd", "ir", .2);
-
 currencyConverter.UpdateConfiguration(new List<Tuple<string, string, double>>()
 {
     new Tuple<string, string, double>("cad", "gbp", .8),
